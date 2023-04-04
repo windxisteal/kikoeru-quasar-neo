@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card style="background:#222222;">
     <router-link :to="`/work/${metadata.id}`">
       <CoverSFW :workid="metadata.id" :nsfw="false" :release="metadata.release" />
     </router-link>
@@ -9,7 +9,7 @@
     <div v-if="!thumbnailMode">
       <!-- 标题 -->
       <div class="q-mx-sm text-h6 text-weight-regular ellipsis-2-lines">
-        <router-link :to="`/work/${metadata.id}`" class="text-black">
+        <router-link :to="`/work/${metadata.id}`" class="text-white">
           {{ metadata.title }}
         </router-link>
       </div>
@@ -77,6 +77,7 @@
         <span class="q-mx-sm text-weight-medium text-h6 text-red">{{ metadata.price }} 日元</span>
         <span>售出数: {{ metadata.dl_count }}</span>
         <span v-if="!metadata.nsfw" class="q-mx-sm" style="background: #e6f7d6; color: #56842a">全年龄</span>
+        <span v-if="!metadata.lrc" class="q-mx-sm" style="background: #FFFFF0; color: #FF00FF">带字幕</span>
       </div>
 
       <!-- 标签 -->

@@ -3,7 +3,7 @@ export default function () {
     hide: false,
     playing: false, // 播放状态 (true/false)
     currentTime: 0, // 单位: 秒
-    duration: 0,
+    duration: 5,
     source: "",
     queue: [
       // list of tracks. object format:

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr lFf" class="bg-grey-3">
+  <q-layout view="hHh Lpr lFf" class="" style="background:#111111;">
     <q-header class="shadow-4">
       <q-toolbar class="row justify-between">
         <q-btn flat dense round @click="drawerOpen = !drawerOpen" icon="menu" aria-label="Menu" />
@@ -31,13 +31,11 @@
       @mouseover="miniState = false"
       @mouseout="miniState = true"
       mini-to-overlay
-
       :width="230"
       :breakpoint="500"
-      bordered
-      content-class="bg-grey-1"
+      
     >
-      <q-scroll-area class="fit">
+      <q-scroll-area class="fit bg-dark text-white">
         <q-list>
           <q-item
             clickable
@@ -95,6 +93,24 @@
               </q-item-label>
             </q-item-section>
           </q-item>
+
+          <q-item
+            clickable
+            v-ripple
+            exact
+            active-class="text-deep-purple text-weight-medium"
+            @click="noPic"
+          >
+            <q-item-section avatar>
+              <q-icon name="photo" />
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label class="text-subtitle1">
+                无图模式
+              </q-item-label>
+            </q-item-section>
+          </q-item>
         </q-list>
 
         <q-list>
@@ -137,9 +153,9 @@
 
     <SleepMode v-model="showTimer" />
 
-    <q-page-container>
+    <q-page-container style="background:#111111;" class="text-white">
       <!-- <q-page padding> -->
-        <keep-alive include="Works">
+        <keep-alive include="Works" >
           <router-view />
         </keep-alive>
       <!-- </q-page> -->
@@ -148,7 +164,7 @@
         </q-page-scroller>
     </q-page-container>
 
-    <q-footer class="q-pa-none">
+    <q-footer class="q-pa-none" text-color="white">
       <LyricsBar />
       <PlayerBar />
     </q-footer>
@@ -347,6 +363,17 @@ export default {
 
     randomPlay() {
       this.requestRandomWork();
+    },
+
+    noPic() {
+      let noPicFlag = this.$q.localStorage.getItem('noPicFlag');
+      if (noPicFlag == null) {
+        this.$q.localStorage.set('noPicFlag', true);
+      } else {
+        noPicFlag = !noPicFlag;
+        this.$q.localStorage.set('noPicFlag', noPicFlag);
+      }
+      location.reload()
     },
 
     requestRandomWork () {

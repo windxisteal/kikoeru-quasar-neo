@@ -11,7 +11,7 @@
     </q-breadcrumbs>
 
     <q-card>
-      <q-list separator>
+      <q-list separator style="background:#333333;">
         <q-item
           clickable
           v-ripple
@@ -32,7 +32,7 @@
 
           <q-item-section>
             <q-item-label lines="2">{{ item.title }}</q-item-label>
-            <q-item-label v-if="item.children" caption lines="1">{{ `${item.children.length} 项目` }}</q-item-label>
+            <q-item-label v-if="item.children" caption lines="1"  class="text-white">{{ `${item.children.length} 项目` }}</q-item-label>
           </q-item-section>
 
           <!-- 上下文菜单 -->

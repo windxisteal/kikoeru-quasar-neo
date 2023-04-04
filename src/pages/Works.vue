@@ -127,11 +127,21 @@ export default {
       pagination: { currentPage:0, pageSize:12, totalCount:0 },
       seed: 7, // random sort
       sortOption: {
-        label: '按照发售日期新到老的顺序',
-        order: 'release',
+        label: '按照创建日期新到老的顺序',
+        order: 'created_at',
         sort: 'desc'
       },
       options: [
+        {
+          label: '按照创建日期新到老的顺序',
+          order: 'created_at',
+          sort: 'desc'
+        },
+        {
+          label: '按照有字幕新作优先的顺序',
+          order: 'lrc',
+          sort: 'asc'
+        },
         {
           label: '按照发售日期新到老的顺序',
           order: 'release',
