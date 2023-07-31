@@ -86,7 +86,7 @@
           <div class="col-auto">
             <q-icon name="launch" size="xs" /><a
               class="text-blue"
-              :href="`https://www.dlsite.com/home/work/=/product_id/RJ${String(
+              :href="`https://www.dlsite.com/maniax/work/=/product_id/RJ${String(
                 metadata.id,
               ).padStart(6, '0')}.html`"
               rel="noreferrer noopener"
