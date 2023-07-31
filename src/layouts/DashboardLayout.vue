@@ -10,12 +10,10 @@
     <q-drawer
       v-model="drawer"
       show-if-above
-
       :mini="miniState"
       @mouseover="miniState = false"
       @mouseout="miniState = true"
       mini-to-overlay
-
       :width="200"
       :breakpoint="500"
       bordered
@@ -23,7 +21,7 @@
     >
       <div class="column justify-between fit">
         <q-list padding class="col-auto">
-          <q-item 
+          <q-item
             clickable
             v-ripple
             exact
@@ -38,7 +36,7 @@
             </q-item-section>
 
             <q-item-section>
-              {{link.title}}
+              {{ link.title }}
             </q-item-section>
           </q-item>
         </q-list>
@@ -52,14 +50,14 @@
 </template>
 
 <script>
-import NotifyMixin from '../mixins/Notification.js'
+import NotifyMixin from '../mixins/Notification.js';
 
 export default {
   name: 'DashboardLayout',
 
   mixins: [NotifyMixin],
 
-  data () {
+  data() {
     return {
       drawer: false,
       miniState: true,
@@ -67,63 +65,63 @@ export default {
         {
           title: '音声库',
           icon: 'folder',
-          path: '/admin'
+          path: '/admin',
         },
         {
           title: '扫描',
           icon: 'youtube_searched_for',
-          path: '/admin/scanner'
+          path: '/admin/scanner',
         },
         {
           title: '用户管理',
           icon: 'person',
-          path: '/admin/usermanage'
+          path: '/admin/usermanage',
         },
         {
           title: '高级设置',
           icon: 'settings',
-          path: '/admin/advanced'
+          path: '/admin/advanced',
         },
-        
+
         {
           title: '回到主页',
           icon: 'home',
-          path: '/'
-        }
-      ]
-    }
+          path: '/',
+        },
+      ],
+    };
   },
 
   sockets: {
-    success (payload) {
-      this.showSuccNotif(payload.message)
+    success(payload) {
+      this.showSuccNotif(payload.message);
       if (payload.auth) {
-        this.$store.commit('User/INIT', payload.user)
-        this.$store.commit('User/SET_AUTH', payload.auth)
+        this.$store.commit('User/INIT', payload.user);
+        this.$store.commit('User/SET_AUTH', payload.auth);
       }
     },
-    error (err) {
-      this.showWarnNotif(err.message || err)
-      this.$socket.close()
+    error(err) {
+      this.showWarnNotif(err.message || err);
+      this.$socket.close();
       // 验证失败，跳转到登录页面
-      this.$router.push('/login')
-    }
+      this.$router.push('/login');
+    },
   },
 
-  created () {
+  created() {
     // 从 LocalStorage 中读取 token
-    const token = this.$q.localStorage.getItem('jwt-token') || ''
-    this.$socket.io.opts.query.auth_token = token
-    
+    const token = this.$q.localStorage.getItem('jwt-token') || '';
+    this.$socket.io.opts.query.auth_token = token;
+
     if (!this.$socket.connected) {
-      this.$socket.open()
+      this.$socket.open();
     }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  a {
-    text-decoration:none;
-  }
+a {
+  text-decoration: none;
+}
 </style>

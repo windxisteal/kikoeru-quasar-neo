@@ -1,8 +1,17 @@
 <template>
-  <q-item clickable :to="`/work/${metadata.id}`" class="bg-dark text-white" style="padding: 5px;">
-    <q-item-section avatar style="padding: 0px 5px 0px 0px;">
+  <q-item
+    clickable
+    :to="`/work/${metadata.id}`"
+    class="bg-dark text-white"
+    style="padding: 5px"
+  >
+    <q-item-section avatar style="padding: 0px 5px 0px 0px">
       <router-link :to="`/work/${metadata.id}`">
-        <q-img transition="fade" :src="samCoverUrl" style="height: 60px; width: 60px;" />
+        <q-img
+          transition="fade"
+          :src="samCoverUrl"
+          style="height: 60px; width: 60px"
+        />
       </router-link>
     </q-item-section>
 
@@ -15,7 +24,10 @@
 
       <q-item-label>
         <div class="row q-gutter-x-sm q-gutter-y-xs">
-          <router-link :to="`/works?circleId=${metadata.circle.id}`" class="col-auto text-grey">
+          <router-link
+            :to="`/works?circleId=${metadata.circle.id}`"
+            class="col-auto text-grey"
+          >
             {{ metadata.circle.name }}
           </router-link>
 
@@ -24,7 +36,7 @@
           <router-link
             v-for="(va, index) in metadata.vas"
             :to="`/works?vaId=${va.id}`"
-            :key=index
+            :key="index"
             class="col-auto text-primary"
           >
             {{ va.name }}
@@ -32,12 +44,12 @@
         </div>
       </q-item-label>
 
-      <q-item-label v-if="showLabel && $q.screen.width> 700">
+      <q-item-label v-if="showLabel && $q.screen.width > 700">
         <div class="row q-gutter-x-sm q-gutter-y-xs">
           <router-link
             v-for="(tag, index) in metadata.tags"
             :to="`/works?tagId=${tag.id}`"
-            :key=index
+            :key="index"
             class="col-auto text-grey"
           >
             {{ tag.name }}
@@ -45,7 +57,7 @@
         </div>
       </q-item-label>
     </q-item-section>
-  </q-item>   
+  </q-item>
 </template>
 
 <script>
@@ -58,20 +70,22 @@ export default {
   props: {
     metadata: {
       type: Object,
-      required: true
+      required: true,
     },
     showLabel: {
       type: Boolean,
-      default: true
+      default: true,
     },
   },
 
   computed: {
-    samCoverUrl () {
+    samCoverUrl() {
       // 从 LocalStorage 中读取 token
-      const token = this.$q.localStorage.getItem('jwt-token') || ''
-      return this.metadata.id ? `/api/cover/${this.metadata.id}?type=sam&token=${token}` : ""
+      const token = this.$q.localStorage.getItem('jwt-token') || '';
+      return this.metadata.id
+        ? `/api/cover/${this.metadata.id}?type=sam&token=${token}`
+        : '';
     },
-  }
-}
+  },
+};
 </script>

@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import WorkDetails from 'components/WorkDetails'
+import WorkDetails from 'components/WorkDetails.vue';
 // import WorkQueue from 'components/WorkQueue'
-import WorkTree from 'components/WorkTree'
-import NotifyMixin from '../mixins/Notification.js'
+import WorkTree from 'components/WorkTree.vue';
+import NotifyMixin from '../mixins/Notification.js';
 
 export default {
   name: 'Work',
@@ -20,59 +20,67 @@ export default {
   components: {
     WorkDetails,
     // WorkQueue,
-    WorkTree
+    WorkTree,
   },
 
-  data () {
+  data() {
     return {
       workid: this.$route.params.id,
       metadata: {
         id: parseInt(this.$route.params.id),
-        circle: {}
+        circle: {},
       },
-      tree: []
-    }
+      tree: [],
+    };
   },
 
   watch: {
-    $route (to) {
+    $route(to) {
       this.workid = to.params.id;
       this.requestData();
-    }
+    },
   },
 
-  created () {
-    this.requestData()
+  created() {
+    this.requestData();
   },
 
   methods: {
-    requestData () {
-      this.$axios.get(`/api/work/${this.workid}`)
-        .then(response => {
-          this.metadata = response.data
+    requestData() {
+      this.$axios
+        .get(`/api/work/${this.workid}`)
+        .then((response) => {
+          this.metadata = response.data;
         })
         .catch((error) => {
           if (error.response) {
             // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-            this.showErrNotif(error.response.data.error || `${error.response.status} ${error.response.statusText}`)
+            this.showErrNotif(
+              error.response.data.error ||
+                `${error.response.status} ${error.response.statusText}`,
+            );
           } else {
-            this.showErrNotif(error.message || error)
+            this.showErrNotif(error.message || error);
           }
-        })
+        });
 
-      this.$axios.get(`/api/tracks/${this.workid}`)
-        .then(response => {
-          this.tree = response.data
+      this.$axios
+        .get(`/api/tracks/${this.workid}`)
+        .then((response) => {
+          this.tree = response.data;
         })
         .catch((error) => {
           if (error.response) {
             // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-            this.showErrNotif(error.response.data.error || `${error.response.status} ${error.response.statusText}`)
+            this.showErrNotif(
+              error.response.data.error ||
+                `${error.response.status} ${error.response.statusText}`,
+            );
           } else {
-            this.showErrNotif(error.message || error)
+            this.showErrNotif(error.message || error);
           }
-        })
+        });
     },
-  }
-}
+  },
+};
 </script>

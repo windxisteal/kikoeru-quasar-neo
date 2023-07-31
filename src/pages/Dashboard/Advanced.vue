@@ -6,7 +6,7 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>后退按钮跳跃秒数</q-item-label>
             <q-item-label caption>播放时后退按钮跳跃秒数</q-item-label>
@@ -14,9 +14,9 @@
 
           <q-item-section avatar>
             <div class="q-gutter-sm">
-              <q-radio dense v-model="rewindSeekTime" val=5 label="5 秒" />
-              <q-radio dense v-model="rewindSeekTime" val=10 label="10 秒" />
-              <q-radio dense v-model="rewindSeekTime" val=30 label="30 秒" />
+              <q-radio dense v-model="rewindSeekTime" val="5" label="5 秒" />
+              <q-radio dense v-model="rewindSeekTime" val="10" label="10 秒" />
+              <q-radio dense v-model="rewindSeekTime" val="30" label="30 秒" />
             </div>
           </q-item-section>
         </q-item>
@@ -44,17 +44,34 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>标签语言</q-item-label>
-            <q-item-label caption>从 DLSite 爬取的标签元数据的语言</q-item-label>
+            <q-item-label caption
+              >从 DLSite 爬取的标签元数据的语言</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
             <div class="q-gutter-sm">
-              <q-radio dense v-model="config.tagLanguage" val="zh-cn" label="简" />
-              <q-radio dense v-model="config.tagLanguage" val="zh-tw" label="繁" />
-              <q-radio dense v-model="config.tagLanguage" val="ja-jp" label="日" />
+              <q-radio
+                dense
+                v-model="config.tagLanguage"
+                val="zh-cn"
+                label="简"
+              />
+              <q-radio
+                dense
+                v-model="config.tagLanguage"
+                val="zh-tw"
+                label="繁"
+              />
+              <q-radio
+                dense
+                v-model="config.tagLanguage"
+                val="ja-jp"
+                label="日"
+              />
             </div>
           </q-item-section>
         </q-item>
@@ -70,7 +87,7 @@
               v-model.number="config.dlsiteTimeout"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -86,7 +103,7 @@
               v-model.number="config.hvdbTimeout"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -102,7 +119,7 @@
               v-model.number="config.retryDelay"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -118,7 +135,7 @@
               v-model.number="config.retry"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -134,7 +151,7 @@
               v-model.number="config.maxParallelism"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -149,7 +166,7 @@
             <q-input
               v-model="config.httpProxyHost"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -165,7 +182,7 @@
               v-model.number="config.httpProxyPort"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -178,7 +195,7 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>最大递归扫描深度</q-item-label>
             <q-item-label caption>默认 2</q-item-label>
@@ -189,14 +206,16 @@
               v-model.number="config.scannerMaxRecursionDepth"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
         <q-item>
           <q-item-section>
             <q-item-label>扫描时跳过清理音声库</q-item-label>
-            <q-item-label caption>是否跳过清理不存在的音声（不推荐，默认不跳过）</q-item-label>
+            <q-item-label caption
+              >是否跳过清理不存在的音声（不推荐，默认不跳过）</q-item-label
+            >
           </q-item-section>
 
           <q-item-section side>
@@ -213,14 +232,20 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>用户验证</q-item-label>
-            <q-item-label caption>是否启用用户验证（生产环境下无法修改此设置）</q-item-label>
+            <q-item-label caption
+              >是否启用用户验证（生产环境下无法修改此设置）</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
-            <q-toggle v-model="config.auth" dense :disable="config.production" />
+            <q-toggle
+              v-model="config.auth"
+              dense
+              :disable="config.production"
+            />
           </q-item-section>
         </q-item>
 
@@ -231,7 +256,7 @@
           </q-item-section>
 
           <q-item-section avatar>
-            <q-toggle v-model="config.enableGzip" dense/>
+            <q-toggle v-model="config.enableGzip" dense />
           </q-item-section>
         </q-item>
 
@@ -246,7 +271,7 @@
               v-model.number="config.listenPort"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -254,11 +279,13 @@
         <q-item>
           <q-item-section>
             <q-item-label>屏蔽远程连接</q-item-label>
-            <q-item-label caption>只允许本地访问，默认为false。更改此设置需要重启程序</q-item-label>
+            <q-item-label caption
+              >只允许本地访问，默认为false。更改此设置需要重启程序</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
-            <q-toggle v-model="config.blockRemoteConnection" dense/>
+            <q-toggle v-model="config.blockRemoteConnection" dense />
           </q-item-section>
         </q-item>
 
@@ -273,7 +300,7 @@
               v-model.number="config.expiresIn"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -289,7 +316,7 @@
               v-model.number="config.pageSize"
               type="number"
               input-class="text-right"
-              style="max-width: 100px;"
+              style="max-width: 100px"
             />
           </q-item-section>
         </q-item>
@@ -302,10 +329,13 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>生产环境</q-item-label>
-            <q-item-label caption>此设置无法在网页端修改，详情请查阅GitHub Wiki中关于配置文件的说明</q-item-label>
+            <q-item-label caption
+              >此设置无法在网页端修改，详情请查阅GitHub
+              Wiki中关于配置文件的说明</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
@@ -321,7 +351,7 @@
       </q-toolbar>
 
       <q-list>
-        <q-item style="height: 70px;">
+        <q-item style="height: 70px">
           <q-item-section>
             <q-item-label>检查更新</q-item-label>
             <q-item-label caption>打开网页时是否检查更新</q-item-label>
@@ -346,7 +376,9 @@
         <q-item>
           <q-item-section>
             <q-item-label>数据库使用默认路径</q-item-label>
-            <q-item-label caption>使用程序所在位置下的sqlite文件夹，并忽略databaseFolderDir设置（如无必要请勿修改，更改此设置需要重启程序）</q-item-label>
+            <q-item-label caption
+              >使用程序所在位置下的sqlite文件夹，并忽略databaseFolderDir设置（如无必要请勿修改，更改此设置需要重启程序）</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
@@ -357,7 +389,9 @@
         <q-item>
           <q-item-section>
             <q-item-label>封面使用默认路径</q-item-label>
-            <q-item-label caption>使用程序所在位置下的covers文件夹，并忽略封面文件夹路径设置</q-item-label>
+            <q-item-label caption
+              >使用程序所在位置下的covers文件夹，并忽略封面文件夹路径设置</q-item-label
+            >
           </q-item-section>
 
           <q-item-section avatar>
@@ -374,70 +408,78 @@
 </template>
 
 <script>
-import NotifyMixin from '../../mixins/Notification.js'
+import NotifyMixin from '../../mixins/Notification.js';
 
 export default {
   name: 'Advanced',
 
   mixins: [NotifyMixin],
 
-  data () {
+  data() {
     return {
       config: {},
       loading: false,
       rewindSeekTime: '5',
-      forwardSeekTime: '30'
-    }
+      forwardSeekTime: '30',
+    };
   },
 
   methods: {
-    requestConfig () {
-      this.$axios.get('/api/config/admin')
+    requestConfig() {
+      this.$axios
+        .get('/api/config/admin')
         .then((response) => {
           this.config = response.data.config;
           // Integer => String
-          this.rewindSeekTime = this.config.rewindSeekTime.toString()
-          this.forwardSeekTime = this.config.forwardSeekTime.toString()
+          this.rewindSeekTime = this.config.rewindSeekTime.toString();
+          this.forwardSeekTime = this.config.forwardSeekTime.toString();
         })
         .catch((error) => {
           if (error.response) {
             // 请求已发出，但服务器响应的状态码不在 2xx 范围内
             if (error.response.status !== 401) {
-              this.showErrNotif(error.response.data.error || `${error.response.status} ${error.response.statusText}`)
+              this.showErrNotif(
+                error.response.data.error ||
+                  `${error.response.status} ${error.response.statusText}`,
+              );
             }
           } else {
-            this.showErrNotif(error.message || error)
+            this.showErrNotif(error.message || error);
           }
-        })
+        });
     },
 
-    onSubmit () {
+    onSubmit() {
       // String => Integer
-      this.config.rewindSeekTime = parseInt(this.rewindSeekTime)
-      this.config.forwardSeekTime = parseInt(this.forwardSeekTime)
+      this.config.rewindSeekTime = parseInt(this.rewindSeekTime);
+      this.config.forwardSeekTime = parseInt(this.forwardSeekTime);
 
-      this.loading = true
-      this.$axios.put('/api/config/admin', {
-        config: this.config
-      })
+      this.loading = true;
+      this.$axios
+        .put('/api/config/admin', {
+          config: this.config,
+        })
         .then((response) => {
-          this.loading = false
-          this.showSuccNotif(response.data.message)
+          this.loading = false;
+          this.showSuccNotif(response.data.message);
         })
         .catch((error) => {
-          this.loading = false
+          this.loading = false;
           if (error.response) {
             // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-            this.showErrNotif(error.response.data.error || `${error.response.status} ${error.response.statusText}`)
+            this.showErrNotif(
+              error.response.data.error ||
+                `${error.response.status} ${error.response.statusText}`,
+            );
           } else {
-            this.showErrNotif(error.message || error)
+            this.showErrNotif(error.message || error);
           }
-        })
+        });
     },
   },
 
-  created () {
-    this.requestConfig()
-  }
-}
+  created() {
+    this.requestConfig();
+  },
+};
 </script>

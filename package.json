@@ -1,55 +1,42 @@
 {
-  "name": "kikoeru-quasar",
-  "version": "0.6.2",
+  "name": "kikoeru-neo",
+  "version": "0.0.1",
   "description": "A self-hosted web media player for listening to your DLsite voice works.",
-  "homepage": "https://github.com/kikoeru-project/kikoeru-quasar",
-  "productName": "Kikoeru",
-  "cordovaId": "org.cordova.quasar.kikoeru",
-  "capacitorId": "",
-  "author": "Watanuki-Kimihiro",
-  "contributors": [
-    "yodhcn",
-    "umonaca <mw2010a@gmail.com>"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:kikoeru-project/kikoeru-quasar.git"
-  },
-  "license": "GPL-3.0-only",
-  "keywords": [
-    "kikoeru"
-  ],
+  "productName": "Kikoeru-neo",
+  "author": "Windxisteal",
+  "private": true,
   "scripts": {
-    "test": "node_modules/.bin/eslint ."
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build"
   },
   "dependencies": {
-    "@quasar/extras": "^1.10.4",
-    "axios": "^0.21.1",
-    "lrc-file-parser": "^1.0.7",
-    "plyr": "^3.6.7",
-    "quasar": "^1.15.12",
-    "vue-plyr": "^6.0.4",
-    "vue-slider-component": "^3.2.11",
-    "vue-socket.io": "^3.0.10",
-    "vuedraggable": "^2.24.3"
+    "@quasar/extras": "^1.16.5",
+    "axios": "^1.4.0",
+    "lrc-file-parser": "^2.4.1",
+    "quasar": "^2.12.3",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4",
+    "vuedraggable": "^2.24.3",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@quasar/app": "^1.9.6",
-    "eslint": "^7.25.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-vue": "^7.9.0"
+    "@quasar/app-vite": "^1.4.3",
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-vue": "^9.16.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
   },
   "engines": {
-    "node": ">= 10.18.1",
+    "node": "^20 || ^18 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  },
-  "browserslist": [
-    "last 1 version, not dead, ie >= 11"
-  ],
-  "eslintIgnore": [
-    "dist/*",
-    "src/router/index.js"
-  ]
+  }
 }

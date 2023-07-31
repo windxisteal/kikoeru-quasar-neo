@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import VuePlyr from 'vue-plyr'
- 
+import Vue from 'vue';
+import VuePlyr from 'vue-plyr';
+
 Vue.use(VuePlyr, {
   plyr: {
-    controls: ['progress']
-  }
-})
+    controls: ['progress'],
+  },
+});
